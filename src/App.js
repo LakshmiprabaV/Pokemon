@@ -112,7 +112,7 @@ export default function App() {
       <div className="sortBy">
         <select value={sortBy} onChange={(e) => handleSort(e.target.value)}>
           <option disabled value="">
-            <em>Sort By</em>
+            Sort By
           </option>
           <option value="name">Name</option>
           <option value="height">Height</option>
