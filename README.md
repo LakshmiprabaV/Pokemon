@@ -7,5 +7,6 @@ Import a GitHub repository in to CodeSandbox using import wizard(https://codesan
 **In Local**
 
 Clone this repo
-Run npm install and npm start
+Run npm install
+    npm start
 The application opens in http://localhost:3000/ or any other available port
