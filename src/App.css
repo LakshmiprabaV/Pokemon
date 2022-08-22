@@ -1,0 +1,49 @@
+* {
+  box-sizing: border-box;
+}
+nav {
+  background-color: green;
+  text-align: center;
+  padding: 5px 10px;
+  font-size: 2em;
+}
+
+.searchType {
+  padding: 9px 0px;
+  margin-top: 8px;
+  display: inline-block;
+  margin-right: 16px;
+  font-size: 17px;
+  border: none;
+  text-align: left;
+}
+
+.grid-container {
+  width: 70%;
+  display: grid;
+  margin: 0 auto;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 10px;
+}
+
+.btn {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.options {
+  display: flex;
+  float: right;
+  padding: 1px;
+}
+
+.btn button {
+  border-style: none;
+  padding: 5px 10px;
+  margin-right: 10px;
+  border-radius: 5px;
+  background: #30a7d7;
+  color: #fff;
+  font-size: 1em;
+}

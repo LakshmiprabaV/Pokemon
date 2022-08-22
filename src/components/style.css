@@ -1,0 +1,30 @@
+p {
+  margin: 0;
+}
+
+.card {
+  background: grey;
+  border-radius: 10px;
+}
+
+.card_img {
+  text-align: center;
+}
+
+.card_name {
+  text-align: center;
+  text-transform: capitalize;
+  font-weight: 800;
+}
+
+.card_info {
+  margin-left: 10px;
+}
+
+.card_data {
+  padding-bottom: 10px;
+}
+
+.card_data .title {
+  font-weight: 700;
+}
