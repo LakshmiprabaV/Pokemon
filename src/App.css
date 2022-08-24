@@ -1,3 +1,11 @@
+html {
+  --bgcolor: none;
+  --colorPrimary: #000;
+  --filterHeading: #000;
+  --selectBg: #fff;
+  --selectText: #000;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -7,15 +15,36 @@ nav {
   padding: 5px 10px;
   font-size: 2em;
 }
-
-.searchType {
-  padding: 9px 0px;
-  margin-top: 8px;
-  display: inline-block;
-  margin-right: 16px;
-  font-size: 17px;
-  border: none;
-  text-align: left;
+.container {
+  display: flex;
+  flex-direction: row;
+  margin: 7vh 0 5vh 0;
+  gap: 0 2vw;
+  align-items: center;
+  justify-content: center;
+}
+.container_input {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  font-weight: bold;
+}
+select {
+  width: 10vw;
+  margin-top: 5px;
+}
+.container_input > input {
+  width: 100%;
+  margin-top: 5px;
+  background-color: var(--selectBg);
+  color: var(--selectText);
+  border: 1px solid var(--selectText);
+}
+.container_input > div,
+label {
+  color: var(--filterHeading);
 }
 
 .grid-container {
@@ -26,16 +55,13 @@ nav {
   grid-gap: 10px;
 }
 
-.btn {
-  display: flex;
-  justify-content: center;
-  margin: 20px 0;
-}
-
 .options {
   display: flex;
+  flex-direction: column;
   float: right;
-  padding: 1px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 10px;
+  font-weight: bold;
 }
 
 .btn button {
