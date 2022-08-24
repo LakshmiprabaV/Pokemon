@@ -1,8 +1,10 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import PokeCard from "./components/Card";
 import { getPokemon, getAllPokemon } from "./actions/PokemonActions";
 import "./App.css";
 import Pagination from "./components/Pagination";
+import PokemonSearch from "./components/PokemonSearch";
+import PokemonSort from "./components/PokemonSort";
 
 export default function App() {
   const initialURL = "https://pokeapi.co/api/v2/pokemon";
@@ -13,9 +15,6 @@ export default function App() {
   const [prevUrl, setPrevUrl] = useState("");
   const [loading, setLoading] = useState(true);
   const [noOfCards, setNoOfCards] = useState(20);
-  const [sortBy, setSortBy] = useState("");
-  const [searchQuery, setSearchQuery] = useState("");
-  const searchType = useRef();
 
   const loadPokemon = async (data) => {
     let _pokemonData = await Promise.all(
@@ -68,67 +67,26 @@ export default function App() {
     setLoading(false);
   };
 
-  function handleSearch(value) {
-    setSearchQuery(value);
-    const type = searchType.current.value;
-    let filteredPokemons = [];
-    if (type.toLowerCase() === "name") {
-      filteredPokemons = pokemonData.filter((pokemon) =>
-        pokemon.name.toLowerCase().includes(value.toLowerCase())
-      );
-    }
-    if (type.toLowerCase() === "ability") {
-      filteredPokemons = pokemonData.filter((pokemon) =>
-        pokemon.abilities.some(({ ability }) =>
-          ability.name.toLowerCase().includes(value.toLowerCase())
-        )
-      );
-    }
-    setfilteredPokemon(filteredPokemons);
-  }
+  const setSearchResult = (pokeData) => {
+    setfilteredPokemon(pokeData);
+  };
 
-  const handleSort = async (value) => {
-    let sortedData = [...pokemonData];
-
-    if (value === "name") {
-      sortedData.sort((a, b) => a.name.localeCompare(b.name));
-    } else {
-      sortedData.sort((a, b) => a[value] - b[value]);
-    }
-    setSortBy(value);
-    await setPokemonData(sortedData);
+  const setSortedResult = (pokeData) => {
+    setPokemonData(pokeData);
   };
 
   return (
     <>
       <nav>POKEMON APPLICATION</nav>
       <div className="container">
-        <div className="container_input">
-          <div>Type</div>
-          <select ref={searchType}>
-            <option>Name</option>
-            <option>Ability</option>
-          </select>
-        </div>
-        <div className="container_input">
-          <label>Search</label>
-          <input
-            value={searchQuery}
-            onChange={(e) => handleSearch(e.target.value)}
-            placeholder="Pokemon search"
-          />
-        </div>
-        <div className="container_input">
-          <div>Sort By</div>
-          <select value={sortBy} onChange={(e) => handleSort(e.target.value)}>
-            <option diabled value="">
-              {""}
-            </option>
-            <option value="name">Name</option>
-            <option value="height">Height</option>
-            <option value="weight">Weight</option>
-          </select>
-        </div>
+        <PokemonSearch
+          setfilteredPokemon={setSearchResult}
+          pokemonData={pokemonData}
+        ></PokemonSearch>
+        <PokemonSort
+          setPokemonData={setSortedResult}
+          pokemonData={pokemonData}
+        ></PokemonSort>
       </div>
       <div>
         {loading ? (
